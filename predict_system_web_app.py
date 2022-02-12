@@ -12,7 +12,7 @@ import joblib
 
 
 #load model
-loaded_model = joblib.load('C:/Users/Dean/FINAL_SIRIUS/trained_model_rev.pkl')
+loaded_model = joblib.load('trained_model_rev.pkl')
 
 
 # In[3]:
