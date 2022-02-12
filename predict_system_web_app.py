@@ -7,12 +7,12 @@
 import numpy as np
 import pickle
 import streamlit as st
-
+import joblib
 # In[2]:
 
 
 #load model
-loaded_model = pickle.load(open('C:/Users/Dean/FINAL_SIRIUS/trained_model_rev.pkl','rb'))
+loaded_model = joblib.load('C:/Users/Dean/FINAL_SIRIUS/trained_model_rev.pkl')
 
 
 # In[3]:
