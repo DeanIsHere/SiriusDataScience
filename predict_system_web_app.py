@@ -6,12 +6,12 @@
 
 import numpy as np
 import streamlit as st
-import joblib
+import pickle
 # In[2]:
 
 
 #load model
-loaded_model = joblib.load('trained_model_rev.pkl')
+loaded_model = pickle.load(open('trained_model_rev.sav','rb'))
 
 
 # In[3]:
