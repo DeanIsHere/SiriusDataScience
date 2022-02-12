@@ -1,0 +1,1 @@
+web: sh setup.sh && streamlit run predict_system_web_app.py
