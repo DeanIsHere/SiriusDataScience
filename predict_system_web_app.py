@@ -152,10 +152,10 @@ def main():
     #creating prediction button
     if st.button('Evaluate Customer'):
         prediksi = churn_prediction(predictor)
-    if prediksi == 'Not Churn':
-        st.success("Nasabah tidak berpotensi Churn")
-    else:
-        st.error("Nasabah berpotensi Churn")
+        if prediksi == 'Not Churn':
+            st.success("Nasabah tidak berpotensi Churn")
+        else:
+            st.error("Nasabah berpotensi Churn")
     
 if __name__ == '__main__':
     main()
