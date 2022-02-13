@@ -4,6 +4,7 @@
 # In[1]:
 
 
+import joblib
 import numpy as np
 import streamlit as st
 import pickle
@@ -20,7 +21,7 @@ import xgboost
 @st.cache()
 # prediction function
 def churn_prediction(input_data):
-    loaded_model = pickle.load(open('trained_model_rev.sav','rb'))
+    loaded_model = joblib.load('trained_model_rev.sav')
     input_data_as_array = np.array(input_data)
     input_data_reshape = input_data_as_array.reshape(1,-1)
 
