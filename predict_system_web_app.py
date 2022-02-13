@@ -11,7 +11,7 @@ import pickle
 
 
 #load model
-loaded_model = pickle.load(open('trained_model_rev.sav','rb'))
+
 
 
 # In[3]:
@@ -19,7 +19,7 @@ loaded_model = pickle.load(open('trained_model_rev.sav','rb'))
 @st.cache()
 # prediction function
 def churn_prediction(input_data):
-    
+    loaded_model = pickle.load(open('trained_model_rev.sav','rb'))
     input_data_as_array = np.array(input_data)
     input_data_reshape = input_data_as_array.reshape(1,-1)
 
