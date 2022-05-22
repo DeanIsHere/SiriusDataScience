@@ -1,28 +1,12 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import joblib
 import numpy as np
 import streamlit as st
 import joblib
 import xgboost
 import sklearn
-# In[2]:
-
-
-#load model
-
-
-
-# In[3]:
-
 @st.cache()
-# prediction function
 def churn_prediction(input_data):
-    loaded_model = joblib.load('trained_model_rev.sav')
+    loaded_model = joblib.load('trained_model_rev.sav') #load using joblib
     input_data_as_array = np.array(input_data)
     input_data_reshape = input_data_as_array.reshape(1,-1)
 
@@ -32,63 +16,59 @@ def churn_prediction(input_data):
         return 'Not Churn'
     else:
         return 'Churn'
-
-
-# In[4]:
-
-
 def main():
     #title
-    st.title('Bank Churners Prediction Web App')
+    st.title('Bank Churners Prediction Web App') #Header
 
     #input
+#1
     Customer_Age = st.slider("Age", 1, 100,1) #input angka
-
+#2
     Dependent_count = st.number_input('Dependent Count', step=1) #input angka dari 1-5
-
+#3
     Months_on_book = st.number_input('Month On Book', step=1) #input angka
-
+#4
     Total_Relationship_Count = st.number_input('Total Relationship', step=1) #input angka
-
+#5
     Months_Inactive_12_mon = st.slider('Inactive Month',1,12) #input angka 1-12
-
+#6
     Contacts_Count_12_mon = st.number_input('Number of Contracts', step=1) #input angka 1-12
-
+#7
     Credit_Limit = st.number_input('Credit Limit', step=1) #input angka
-
+#8
     Total_Revolving_Bal = st.number_input('Total Revoling Balance', step=1) #input angka
-
+#9
     Avg_Open_To_Buy = st.number_input('Average Open to Buy Credit Line', step=1) #input angka
-
+#10
     Total_Amt_Chng_Q4_Q1 = st.number_input('Change in Transaction Amount',format="%.3f", step=0.0001) #input angka float
-
+#11
     Total_Trans_Amt = st.number_input('Total Transaction Amount', step=1) #input angka
-
+#12
     Total_Trans_Ct = st.number_input('Total Transaction Count', step=1) #input angka
-
+#13
     Total_Ct_Chng_Q4_Q1 = st.number_input('Change in Transaction Count',format="%.3f", step=0.0001) #input angka float
-
+#14
     Avg_Utilization_Ratio = st.number_input('Average Card Utilization Ratio', step=0.0001)  #input angka float
-
+#15
     Gender_Cat = st.selectbox("Sex",options=['Male' , 'Female']) #input categori (boolean)
-
+#16
     Education_Level_cat = st.selectbox("Education Level",options=['Uneducated' , 
                                                                     'High School',
                                                                     'College',
                                                                     'Graduate',
                                                                     'Post-Graduate',
                                                                     'Doctorate']) #input categori
-
+#17
     Marital_Status = st.selectbox("Marital Status",options=['Single' , 
                                                                     'Married',
                                                                     'Divorced']) #input categori
-
+#18
     Income_Category_cat = st.selectbox("Income Category",options=['Less than $40K' , 
                                                                     '$40K - $60K',
                                                                     '$60K - $80K',
                                                                     '$80K - $120K',
                                                                     'More Than $120K']) #input categori
-
+#19
     Card_Category = st.selectbox("Income Category",options=['Blue' , 
                                                             'Silver',
                                                             'Gold',
@@ -148,7 +128,12 @@ def main():
 
     #define input array
     prediksi= ''
-    predictor =[Customer_Age,Dependent_count,Months_on_book,Total_Relationship_Count,Months_Inactive_12_mon,Contacts_Count_12_mon,Credit_Limit,Total_Revolving_Bal,Avg_Open_To_Buy,Total_Amt_Chng_Q4_Q1,Total_Trans_Amt,Total_Trans_Ct,Total_Ct_Chng_Q4_Q1,Avg_Utilization_Ratio,Gender_Cat,Education_Level_cat,Marital_Status_Divorced,Marital_Status_Married,Marital_Status_Single,Income_Category_cat,Card_Category_Blue,Card_Category_Gold,Card_Category_Platinum,Card_Category_Silver]
+    predictor =[Customer_Age,Dependent_count,Months_on_book,Total_Relationship_Count,
+                Months_Inactive_12_mon,Contacts_Count_12_mon,Credit_Limit,Total_Revolving_Bal,
+                Avg_Open_To_Buy,Total_Amt_Chng_Q4_Q1,Total_Trans_Amt,Total_Trans_Ct,
+                Total_Ct_Chng_Q4_Q1,Avg_Utilization_Ratio,Gender_Cat,Education_Level_cat,
+                Marital_Status_Divorced,Marital_Status_Married,Marital_Status_Single,Income_Category_cat,
+                Card_Category_Blue,Card_Category_Gold,Card_Category_Platinum,Card_Category_Silver]
     #creating prediction button
     if st.button('Evaluate Customer'):
         prediksi = churn_prediction(predictor)
@@ -160,13 +145,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-
-# %%
-
-# %%
-
-# %%
-
-# %%
-
-# %%
+    
